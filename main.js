@@ -192,7 +192,7 @@ function moveDown() {
 		}
 		erasePreview();
 		if (!validateBlock(nextBlock)) {
-			alert("GAME OVER!!!");
+			alert("Game over1111!");
 			status = 2;
 			return;
 		};
