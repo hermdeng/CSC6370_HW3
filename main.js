@@ -5,6 +5,16 @@ var timer;
 var score = 0;
 const ROW_COUNT = 24;
 const COLUMN_COUNT = 10;
+const BLOCK_COLOR = [
+	"Chocolate", //
+	"Crimson",
+	"DarkBlue",
+	"DarkOliveGreen",
+	"DarkViolet",
+	"DeepPink",
+	"GoldenRod"
+];
+
 var board = new Array(ROW_COUNT);
 for (var i = 0; i < ROW_COUNT; i++) {
 	board[i] = new Array(COLUMN_COUNT);
@@ -16,10 +26,13 @@ for (var i = 0; i < ROW_COUNT; i++) {
 }
 
 var activeBlock;
+var activeBlockType = 0;
 var nextBlock;
+var nextBlockType = 0;
 var previewBlock;
+var previewBlockType = 0;
 function generateBlock() {
-	var block = new Array(4);
+	var block = new Array(5);
 
 	var t = (Math.floor(Math.random() * 20) + 1) % 7;
 	switch (t) {
@@ -41,6 +54,9 @@ function generateBlock() {
 					x: 1,
 					y: 5
 				};
+				block[4] = {
+					type: 0
+				};
 				break;
 			}
 		case 1:
@@ -60,6 +76,9 @@ function generateBlock() {
 				block[3] = {
 					x: 0,
 					y: 6
+				};
+				block[4] = {
+					type: 1
 				};
 				break;
 			}
@@ -81,6 +100,9 @@ function generateBlock() {
 					x: 2,
 					y: 4
 				};
+				block[4] = {
+					type: 2
+				};
 				break;
 			}
 		case 3:
@@ -100,6 +122,9 @@ function generateBlock() {
 				block[3] = {
 					x: 2,
 					y: 5
+				};
+				block[4] = {
+					type: 3
 				};
 				break;
 			}
@@ -121,6 +146,9 @@ function generateBlock() {
 					x: 1,
 					y: 6
 				};
+				block[4] = {
+					type: 4
+				};
 				break;
 			}
 		case 5:
@@ -141,6 +169,9 @@ function generateBlock() {
 					x: 2,
 					y: 5
 				};
+				block[4] = {
+					type: 5
+				};
 				break;
 			}
 		case 6:
@@ -160,6 +191,9 @@ function generateBlock() {
 				block[3] = {
 					x: 1,
 					y: 6
+				};
+				block[4] = {
+					type: 6
 				};
 				break;
 			}
@@ -256,7 +290,7 @@ function rotate() {
 	paint();
 }
 function checkLeftBorder() {
-	for (var i = 0; i < activeBlock.length; i++) {
+	for (var i = 0; i < 4; i++) {
 		if (activeBlock[i].y == 0) {
 			return false;
 		}
@@ -267,7 +301,7 @@ function checkLeftBorder() {
 	return true;
 }
 function checkRightBorder() {
-	for (var i = 0; i < activeBlock.length; i++) {
+	for (var i = 0; i < 4; i++) {
 		if (activeBlock[i].y == 9) {
 			return false;
 		}
@@ -278,7 +312,7 @@ function checkRightBorder() {
 	return true;
 }
 function checkBottomBorder() {
-	for (var i = 0; i < activeBlock.length; i++) {
+	for (var i = 0; i < 4; i++) {
 		if (activeBlock[i].x == (ROW_COUNT - 1)) {
 			return false;
 		}
@@ -292,6 +326,7 @@ function isCellValid(x, y) {
 	if (x > (ROW_COUNT - 1) || x < 0 || y > 9 || y < 0) {
 		return false;
 	}
+	console.log("boardX: " + x + ", boardY: " + y);
 	if (board[x][y] == 1) {
 		return false;
 	}
@@ -304,13 +339,13 @@ function erase() {
 }
 function paint() {
 	for (var i = 0; i < 4; i++) {
-		tbl.rows[activeBlock[i].x].cells[activeBlock[i].y].style.backgroundColor = "red";
+		tbl.rows[activeBlock[i].x].cells[activeBlock[i].y].style.backgroundColor = BLOCK_COLOR[activeBlock[4].type];
 	}
 }
 
 function paintPreview() {
 	for (var i = 0; i < 4; i++) {
-		preTbl.rows[previewBlock[i].x].cells[previewBlock[i].y].style.backgroundColor = "red";
+		preTbl.rows[previewBlock[i].x].cells[previewBlock[i].y].style.backgroundColor = BLOCK_COLOR[previewBlock[4].type];
 	}
 }
 
@@ -360,7 +395,7 @@ function paintBoard() {
 	for (var i = 0; i < ROW_COUNT; i++) {
 		for (var j = 0; j < COLUMN_COUNT; j++) {
 			if (board[i][j] == 1) {
-				tbl.rows[i].cells[j].style.backgroundColor = "red";
+				tbl.rows[i].cells[j].style.backgroundColor = "DimGray";
 			}
 		}
 	}
@@ -408,17 +443,21 @@ function keyControl() {
 }
 
 function copyBlock(old) {
-	var o = new Array(4);
+	var o = new Array(5);
 	for (var i = 0; i < 4; i++) {
 		o[i] = {
 			x: 0,
 			y: 0
 		};
 	}
+	o[4] = {
+		type: 0
+	}
 	for (var i = 0; i < 4; i++) {
 		o[i].x = old[i].x;
 		o[i].y = old[i].y;
 	}
+	o[4].type = old[4].type;
 	return o;
 }
 
@@ -449,3 +488,4 @@ function begin(e) {
 	timer = setInterval(moveDown, 1000);
 }
 document.onkeydown = keyControl;
+keyControl;
