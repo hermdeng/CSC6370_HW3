@@ -491,11 +491,14 @@ function applyPreview() {
 }
 
 function pause(e) {
+	e.blur();
 	if (e.value === "Pause") {
+		status = 3;
 		e.value = "Resume";
 		e.className = "btn btn-large btn-warning";
 		clearInterval(timer);
 	} else {
+		status = 1;
 		e.value = "Pause";
 		e.className = "btn btn-large btn-success";
 		timer = setInterval(moveDown, 1000);
