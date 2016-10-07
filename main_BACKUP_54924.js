@@ -3,6 +3,7 @@ var preTbl;
 var status = 0;
 var timer;
 var score = 0;
+<<<<<<< HEAD
 const ROW_COUNT = 24;
 const COLUMN_COUNT = 10;
 var board = new Array(ROW_COUNT);
@@ -11,6 +12,14 @@ for (var i = 0; i < ROW_COUNT; i++) {
 }
 for (var i = 0; i < ROW_COUNT; i++) {
 	for (var j = 0; j < COLUMN_COUNT; j++) {
+=======
+var board = new Array(24);
+for (var i = 0; i < 24; i++) {
+	board[i] = new Array(10);
+}
+for (var i = 0; i < 24; i++) {
+	for (var j = 0; j < 10; j++) {
+>>>>>>> c9f393c746d254335195999ce5e8c7dee731e8cf
 		board[i][j] = 0;
 	}
 }
@@ -279,7 +288,11 @@ function checkRightBorder() {
 }
 function checkBottomBorder() {
 	for (var i = 0; i < activeBlock.length; i++) {
+<<<<<<< HEAD
 		if (activeBlock[i].x == (ROW_COUNT - 1)) {
+=======
+		if (activeBlock[i].x == 23) {
+>>>>>>> c9f393c746d254335195999ce5e8c7dee731e8cf
 			return false;
 		}
 		if (!isCellValid(activeBlock[i].x + 1, activeBlock[i].y)) {
@@ -289,7 +302,11 @@ function checkBottomBorder() {
 	return true;
 }
 function isCellValid(x, y) {
+<<<<<<< HEAD
 	if (x > (ROW_COUNT - 1) || x < 0 || y > 9 || y < 0) {
+=======
+	if (x > 23 || x < 0 || y > 9 || y < 0) {
+>>>>>>> c9f393c746d254335195999ce5e8c7dee731e8cf
 		return false;
 	}
 	if (board[x][y] == 1) {
@@ -328,7 +345,11 @@ function updateBoard() {
 
 function deleteLine() {
 	var lines = 0;
+<<<<<<< HEAD
 	for (var i = 0; i < ROW_COUNT; i++) {
+=======
+	for (var i = 0; i < 24; i++) {
+>>>>>>> c9f393c746d254335195999ce5e8c7dee731e8cf
 		var j = 0;
 		for (; j < 10; j++) {
 			if (board[i][j] == 0) {
@@ -349,16 +370,26 @@ function deleteLine() {
 }
 
 function eraseBoard() {
+<<<<<<< HEAD
+	for (var i = 0; i < ROW_COUNT; i++) {
+		for (var j = 0; j < COLUMN_COUNT; j++) {
+=======
 	for (var i = 0; i < 24; i++) {
 		for (var j = 0; j < 10; j++) {
+>>>>>>> c9f393c746d254335195999ce5e8c7dee731e8cf
 			tbl.rows[i].cells[j].style.backgroundColor = "white";
 		}
 	}
 }
 
 function paintBoard() {
+<<<<<<< HEAD
 	for (var i = 0; i < ROW_COUNT; i++) {
 		for (var j = 0; j < COLUMN_COUNT; j++) {
+=======
+	for (var i = 0; i < 24; i++) {
+		for (var j = 0; j < 10; j++) {
+>>>>>>> c9f393c746d254335195999ce5e8c7dee731e8cf
 			if (board[i][j] == 1) {
 				tbl.rows[i].cells[j].style.backgroundColor = "red";
 			}

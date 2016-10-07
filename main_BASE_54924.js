@@ -3,14 +3,12 @@ var preTbl;
 var status = 0;
 var timer;
 var score = 0;
-const ROW_COUNT = 24;
-const COLUMN_COUNT = 10;
-var board = new Array(ROW_COUNT);
-for (var i = 0; i < ROW_COUNT; i++) {
-	board[i] = new Array(COLUMN_COUNT);
+var board = new Array(18);
+for (var i = 0; i < 18; i++) {
+	board[i] = new Array(10);
 }
-for (var i = 0; i < ROW_COUNT; i++) {
-	for (var j = 0; j < COLUMN_COUNT; j++) {
+for (var i = 0; i < 18; i++) {
+	for (var j = 0; j < 10; j++) {
 		board[i][j] = 0;
 	}
 }
@@ -183,7 +181,7 @@ function moveDown() {
 			} else if (lines == 3) {
 				lines = 6;
 			} else if (lines == 4) {
-				lines = COLUMN_COUNT;
+				lines = 10;
 			}
 			score = score + lines;
 			updateScore();
@@ -192,7 +190,7 @@ function moveDown() {
 		}
 		erasePreview();
 		if (!validateBlock(nextBlock)) {
-			alert("GAME OVER!!!");
+			alert("Game over1111!");
 			status = 2;
 			return;
 		};
@@ -279,7 +277,7 @@ function checkRightBorder() {
 }
 function checkBottomBorder() {
 	for (var i = 0; i < activeBlock.length; i++) {
-		if (activeBlock[i].x == (ROW_COUNT - 1)) {
+		if (activeBlock[i].x == 17) {
 			return false;
 		}
 		if (!isCellValid(activeBlock[i].x + 1, activeBlock[i].y)) {
@@ -289,7 +287,7 @@ function checkBottomBorder() {
 	return true;
 }
 function isCellValid(x, y) {
-	if (x > (ROW_COUNT - 1) || x < 0 || y > 9 || y < 0) {
+	if (x > 17 || x < 0 || y > 9 || y < 0) {
 		return false;
 	}
 	if (board[x][y] == 1) {
@@ -328,7 +326,7 @@ function updateBoard() {
 
 function deleteLine() {
 	var lines = 0;
-	for (var i = 0; i < ROW_COUNT; i++) {
+	for (var i = 0; i < 18; i++) {
 		var j = 0;
 		for (; j < 10; j++) {
 			if (board[i][j] == 0) {
@@ -349,7 +347,7 @@ function deleteLine() {
 }
 
 function eraseBoard() {
-	for (var i = 0; i < 24; i++) {
+	for (var i = 0; i < 18; i++) {
 		for (var j = 0; j < 10; j++) {
 			tbl.rows[i].cells[j].style.backgroundColor = "white";
 		}
@@ -357,8 +355,8 @@ function eraseBoard() {
 }
 
 function paintBoard() {
-	for (var i = 0; i < ROW_COUNT; i++) {
-		for (var j = 0; j < COLUMN_COUNT; j++) {
+	for (var i = 0; i < 18; i++) {
+		for (var j = 0; j < 10; j++) {
 			if (board[i][j] == 1) {
 				tbl.rows[i].cells[j].style.backgroundColor = "red";
 			}
@@ -367,8 +365,8 @@ function paintBoard() {
 }
 
 function generateBlankLine() {
-	var line = new Array(COLUMN_COUNT);
-	for (var i = 0; i < COLUMN_COUNT; i++) {
+	var line = new Array(10);
+	for (var i = 0; i < 10; i++) {
 		line[i] = 0;
 	}
 	return line;

@@ -192,7 +192,7 @@ function moveDown() {
 		}
 		erasePreview();
 		if (!validateBlock(nextBlock)) {
-			alert("GAME OVER!!!");
+			alert("Game over1111!");
 			status = 2;
 			return;
 		};
@@ -349,8 +349,8 @@ function deleteLine() {
 }
 
 function eraseBoard() {
-	for (var i = 0; i < 24; i++) {
-		for (var j = 0; j < 10; j++) {
+	for (var i = 0; i < ROW_COUNT; i++) {
+		for (var j = 0; j < COLUMN_COUNT; j++) {
 			tbl.rows[i].cells[j].style.backgroundColor = "white";
 		}
 	}
