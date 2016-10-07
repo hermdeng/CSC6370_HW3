@@ -230,6 +230,7 @@ function moveDown() {
 		}
 		erasePreview();
 		if (!validateBlock(nextBlock)) {
+			paintBoard();
 			swal("GAME OVER!!!");
 			status = 2;
 			beginButton = document.getElementById("beginButton");
