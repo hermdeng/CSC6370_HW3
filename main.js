@@ -190,7 +190,7 @@ function moveDown() {
 		}
 		erasePreview();
 		if (!validateBlock(nextBlock)) {
-			alert("Game over1111!");
+			alert("GAME OVER!!!");
 			status = 2;
 			return;
 		};
