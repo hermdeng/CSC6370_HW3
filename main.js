@@ -6,7 +6,7 @@ var score = 0;
 const ROW_COUNT = 24;
 const COLUMN_COUNT = 10;
 const BLOCK_COLOR = [
-	"Chocolate", //
+	"Chocolate",
 	"Crimson",
 	"DarkBlue",
 	"DarkOliveGreen",
