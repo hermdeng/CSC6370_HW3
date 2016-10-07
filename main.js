@@ -445,6 +445,15 @@ function keyControl() {
 				moveDown();
 				break;
 			}
+		case 32:
+			{
+				clearInterval(timer);
+				timer = setInterval(moveDown, 0);
+				setTimeout(function() {
+					clearInterval(timer);
+					timer = setInterval(moveDown, 1000);
+				}, 200);
+			}
 	}
 }
 
