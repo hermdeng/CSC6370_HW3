@@ -480,9 +480,22 @@ function applyPreview() {
 
 }
 
+function pause(e) {
+	if (e.value === "Pause") {
+		e.value = "Resume";
+		e.className = "btn btn-large btn-warning";
+		clearInterval(timer);
+	} else {
+		e.value = "Pause";
+		e.className = "btn btn-large btn-success";
+		timer = setInterval(moveDown, 1000);
+	}
+}
+
 function begin(e) {
 	prepareBoard();
 	e.disabled = true;
+	document.getElementById("pauseButton").disabled = false;
 	status = 1;
 	tbl = document.getElementById("board");
 	eraseBoard();

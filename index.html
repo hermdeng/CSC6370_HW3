@@ -27,10 +27,13 @@
         <div class="container container-table">
             <div class="row vertical-center-row" style="padding-top: 20px;">
                 <div class="col-md-1 col-md-offset-4">
-                    <Input id="beginButton" class="btn btn-large btn-primary" type="button" value="begin" onclick="begin(this);"/>
+                    <Input id="beginButton" class="btn btn-large btn-primary" type="button" value="Start" onclick="begin(this);"/>
                 </div>
-                <div class="col-md-1 col-md-offset-1">
+                <div class="col-md-1">
                   Score:<span id="score">0</span><br /><br />
+                </div>
+                <div class="col-md-1">
+                  <Input id="pauseButton" class="btn btn-large btn-success" type="button" value="Pause" onclick="pause(this);" disabled/>
                 </div>
             </div>
             <div class="row vertical-center-row">
