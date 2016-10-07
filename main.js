@@ -15,13 +15,17 @@ const BLOCK_COLOR = [
 	"GoldenRod"
 ];
 
-var board = new Array(ROW_COUNT);
-for (var i = 0; i < ROW_COUNT; i++) {
-	board[i] = new Array(COLUMN_COUNT);
-}
-for (var i = 0; i < ROW_COUNT; i++) {
-	for (var j = 0; j < COLUMN_COUNT; j++) {
-		board[i][j] = 0;
+var board;
+
+function prepareBoard() {
+	board = new Array(ROW_COUNT);
+	for (var i = 0; i < ROW_COUNT; i++) {
+		board[i] = new Array(COLUMN_COUNT);
+	}
+	for (var i = 0; i < ROW_COUNT; i++) {
+		for (var j = 0; j < COLUMN_COUNT; j++) {
+			board[i][j] = 0;
+		}
 	}
 }
 
@@ -228,6 +232,8 @@ function moveDown() {
 		if (!validateBlock(nextBlock)) {
 			alert("GAME OVER!!!");
 			status = 2;
+			beginButton = document.getElementById("beginButton");
+			beginButton.disabled = false;
 			return;
 		};
 		activeBlock = nextBlock;
@@ -475,9 +481,11 @@ function applyPreview() {
 }
 
 function begin(e) {
+	prepareBoard();
 	e.disabled = true;
 	status = 1;
 	tbl = document.getElementById("board");
+	eraseBoard();
 	preTbl = document.getElementById("preBoard");
 	activeBlock = generateBlock();
 	nextBlock = generateBlock();
