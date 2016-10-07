@@ -3,11 +3,11 @@ var preTbl;
 var status = 0;
 var timer;
 var score = 0;
-var board = new Array(18);
-for (var i = 0; i < 18; i++) {
+var board = new Array(24);
+for (var i = 0; i < 24; i++) {
 	board[i] = new Array(10);
 }
-for (var i = 0; i < 18; i++) {
+for (var i = 0; i < 24; i++) {
 	for (var j = 0; j < 10; j++) {
 		board[i][j] = 0;
 	}
@@ -277,7 +277,7 @@ function checkRightBorder() {
 }
 function checkBottomBorder() {
 	for (var i = 0; i < activeBlock.length; i++) {
-		if (activeBlock[i].x == 17) {
+		if (activeBlock[i].x == 23) {
 			return false;
 		}
 		if (!isCellValid(activeBlock[i].x + 1, activeBlock[i].y)) {
@@ -287,7 +287,7 @@ function checkBottomBorder() {
 	return true;
 }
 function isCellValid(x, y) {
-	if (x > 17 || x < 0 || y > 9 || y < 0) {
+	if (x > 23 || x < 0 || y > 9 || y < 0) {
 		return false;
 	}
 	if (board[x][y] == 1) {
@@ -326,7 +326,7 @@ function updateBoard() {
 
 function deleteLine() {
 	var lines = 0;
-	for (var i = 0; i < 18; i++) {
+	for (var i = 0; i < 24; i++) {
 		var j = 0;
 		for (; j < 10; j++) {
 			if (board[i][j] == 0) {
@@ -347,7 +347,7 @@ function deleteLine() {
 }
 
 function eraseBoard() {
-	for (var i = 0; i < 18; i++) {
+	for (var i = 0; i < 24; i++) {
 		for (var j = 0; j < 10; j++) {
 			tbl.rows[i].cells[j].style.backgroundColor = "white";
 		}
@@ -355,7 +355,7 @@ function eraseBoard() {
 }
 
 function paintBoard() {
-	for (var i = 0; i < 18; i++) {
+	for (var i = 0; i < 24; i++) {
 		for (var j = 0; j < 10; j++) {
 			if (board[i][j] == 1) {
 				tbl.rows[i].cells[j].style.backgroundColor = "red";
