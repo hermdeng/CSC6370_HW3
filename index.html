@@ -14,10 +14,11 @@
                 height: 20px;
             }
         </style>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <script src="main.js"></script>
     </head>
     <body>
-
+      <div class="container">
         <Input id="beginButton" type="button" value="begin" onclick="begin(this);"/>     Score: <span id="score">  0</span><br><br>
         <div id="main">
         <table id="board" cellspacing=0 cellpadding=0 border=1 style="border-collapse:collapse;">
@@ -341,5 +342,6 @@
                 </tr>
             </table>
         </div>
+      </div>
     </body>
 </html>
